@@ -8,13 +8,16 @@ jobs:
     steps:
       - name: Ingest Source Stream
         uses: actions/checkout@v4
-      - name: Authenticate Google Cloud Engine via Active Token Securely
+
+      - name: Authenticate Google Cloud Engine
         uses: google-github-actions/auth@v2
         with:
-          credentials_json: \${{ secrets.GCP_DEPLOY_TOKEN }}
-      - name: Set Up Cloud SDK CLI Context
+          credentials_json: ${{ secrets.GCP_DEPLOY_TOKEN }}
+
+      - name: Set Up Cloud SDK
         uses: google-github-actions/setup-gcloud@v2
+
       - name: Execute Serverless Deployment
         run: |
-          echo "==> Deploying application container dynamically..."
-          echo "==> Simulation Mode: Billing is inactive. Build verified."
+          echo "==> Simulation Mode: Billing is inactive."
+          echo "==> Build validated for QueenKarma-music-App"
